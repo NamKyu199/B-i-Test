@@ -10,33 +10,37 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginBottom: 15,
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'flex-start', 
+    marginTop: 10,
+    
   },
   input: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    width: 250,
-    padding: 8,
+    borderRadius: 8,
+    width: 311,
+    padding: 2,
+    marginTop: 15,
   },
   center: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20, // Added padding for better spacing
+    paddingHorizontal: 20, 
   },
-  languagesBox: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginVertical: 10, // Adjusted margin for better spacing
-    gap: 10,
-  },
+  // languagesBox: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'center',
+  //   marginVertical: 10, // Adjusted margin for better spacing
+  //   gap: 10,
+  // },
   button1: {
     backgroundColor: '#D252A5',
     color: 'white',
     padding: 10,
-    width: 250, // Increased width for better visibility
-    borderRadius: 5,
+    width: 300, 
+    borderRadius: 8,
     textAlign: 'center',
     marginTop: 10,
   },
@@ -44,8 +48,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#6655D0',
     color: 'white',
     padding: 10,
-    width: 250, // Increased width for better visibility
-    borderRadius: 5,
+    width: 300, 
+    borderRadius: 8,
     textAlign: 'center',
     marginTop: 10,
   },
@@ -53,8 +57,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     color: 'white',
     padding: 10,
-    width: 50, // Increased width for better visibility
-    borderRadius: 5,
+    width: 50, 
+    borderRadius: 10,
     textAlign: 'center',
     marginTop: 10,
   },
@@ -68,14 +72,14 @@ const styles = StyleSheet.create({
     color: '#00000073',
     fontSize: 14,
     textAlign: 'center',
-    marginTop: 20, // Increased margin for better spacing
+    marginTop: 20, 
   },
   centerText: {
     textAlign: 'center',
-    marginVertical: 10, // Adjusted margin for better spacing
+    marginVertical: 10,
   },
   logo: {
-    width: 200, 
+    width: 129, 
     height: 200, 
     resizeMode: 'contain',
   },
@@ -85,24 +89,69 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between', 
     marginTop: 10, 
+    margin: 5,
   },
   
   forgotPassword: {
     color: 'blue', 
     textDecorationLine: 'underline',
-    marginLeft: 8, 
+    marginLeft: 70, 
   },
 
   checkboxLabel: {
     marginLeft: 8, 
   },
-  Iconbutton: {
-    backgroundColor: '#007BFF', // Màu nền của button
-    borderRadius: 10, // Độ cong của góc
-    padding: 10, // Khoảng cách từ nội dung đến viền
-    marginVertical: 5, // Khoảng cách dọc giữa các button
+  Iconbutton1: {
+    backgroundColor: '#4772CD', 
+    borderRadius: 10, 
+    padding: 10, 
+    margin: 5,
+  },
+  Iconbutton2: {
+    backgroundColor: '#333333', 
+    borderRadius: 10, 
+    padding: 10, 
+    margin: 5,
+  },
+  Iconbutton3: {
+    backgroundColor: '#0068FF', 
+    borderRadius: 50,
+    padding: 10, 
+    margin: 5,
   },
 
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  support: {
+    fontSize: 14, 
+    marginTop:20,
+    marginBottom:20,
+  },
+  number: {
+    fontSize: 16,
+    color: '#BC4893',
+    fontWeight: 'bold',
+  },
+  dropdownContainer: {
+    height: 40,
+    marginBottom: 20,
+  },
+  dropdown: {
+    backgroundColor: '#fafafa',
+  },
+  dropdownItem: {
+    justifyContent: 'flex-start',
+  },
+  dropdownList: {
+    backgroundColor: '#fafafa',
+  },
+  Textlanguage: {
+    textAlign: 'center',
+    marginTop: 10,
+  },
 });
 
 export default styles;
