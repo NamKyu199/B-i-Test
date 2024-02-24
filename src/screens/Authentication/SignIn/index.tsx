@@ -4,7 +4,7 @@ import { SafeAreaView, Text, TouchableOpacity, View, Image } from 'react-native'
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { TextInput } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
 
