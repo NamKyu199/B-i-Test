@@ -30,9 +30,9 @@ const SignInScreen: React.FC = () => {
   const [isChecked, setChecked] = useState(false);
   
 
-  const handleChangeLanguage = (value) => {
+  const handleChangeLanguage = (value: string) => {
     setLanguage(value);
-    i18n.changeLanguage(value.toLowerCase());
+    i18n.changeLanguage(value);
   };
   
   const handleNavigateHome = () => {
@@ -43,16 +43,18 @@ const SignInScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <DropDownPicker
-        items={languages.map(lang => ({ label: t(`button:${lang.label.toLowerCase()}`), value: lang.value }))}
-        defaultValue={language}
-        containerStyle={styles.dropdownContainer}
-        style={styles.dropdown}
-        itemStyle={styles.dropdownItem}
-        dropDownStyle={styles.dropdownList}
-        onChangeItem={(item) => handleChangeLanguage(item.value)}
-      />
-      <Text style={styles.Textlanguage}>
+      <View style={styles.languagesBox}>
+        <RNPickerSelect
+          onValueChange={(value) => handleChangeLanguage(value)}
+          items={[
+            { label: 'Tiếng Việt', value: 'VI' },
+            { label: 'English', value: 'EN' },
+          ]}
+          value={language}
+        />
+      </View>
+
+      <Text style={styles.centerText}>
         {t('common:currentLanguage')}: {language}
       </Text>
 
