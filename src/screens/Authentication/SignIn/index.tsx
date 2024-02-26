@@ -4,6 +4,7 @@ import { SafeAreaView, Text, TouchableOpacity, View, Image } from 'react-native'
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import { TextInput } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -13,7 +14,6 @@ const MiduBanner = require('./../../../assets/img/frame-150.png');
 const IconZalo = require('./../../../assets/img/Social.png');
 const IconTikTok = require('./../../../assets/img/Tiktok.png');
 const IconFacebook = require('./../../../assets/img/facebook.png');
-
 
 const SignInScreen: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
