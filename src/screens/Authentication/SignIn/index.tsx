@@ -10,7 +10,8 @@ import RNPickerSelect from 'react-native-picker-select';
 
 import i18n from '../../../translations/i18n';
 import styles from './styles';
-const MiduBanner = require('./../../../assets/img/frame-150.png');
+const MiduBanner = require('./../../../assets/img/Logo-Midu.png');
+const PosterMidu = require('./../../../assets/img/Poster-Midu.png');
 const IconZalo = require('./../../../assets/img/Social.png');
 const IconTikTok = require('./../../../assets/img/Tiktok.png');
 const IconFacebook = require('./../../../assets/img/facebook.png');
@@ -22,6 +23,7 @@ const SignInScreen: React.FC = () => {
   const [language, setLanguage] = useState('VI');
   const [loginUser, setLoginUser] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setChecked] = useState(false);
   
 
@@ -30,13 +32,19 @@ const SignInScreen: React.FC = () => {
     i18n.changeLanguage(value);
   };
 
-  const handleNavigateHome = () => {
-    navigation.navigate('MainScreen');
+  const handleNavigateSignUp = () => {
+    navigation.navigate('SignUpScreen');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.languagesBox}>
+      <View >
+        <Text style={styles.heading_title}>{t('title:title')}</Text>
+        <Text style={styles.heading_title_item}>{t('title:title_signin')}</Text>
+      </View>
+      <Image source={PosterMidu} style={[styles.Poster, { zIndex: 999 }]} />
+      <View style={styles.backgroudcontainer}>
+              {/* <View style={styles.languagesBox}>
         <RNPickerSelect
           onValueChange={(value) => handleChangeLanguage(value)}
           items={[
@@ -50,16 +58,12 @@ const SignInScreen: React.FC = () => {
        <Text style={styles.centerText}>
         {t('common:currentLanguage')}: {language}
       </Text> */}
-
       <View style={styles.center}>
-        <Image source={MiduBanner} style={styles.logo} />
-        <View>
-          <Text style={styles.title}>{t('title:title')}</Text>
-        </View>
+      <Image source={MiduBanner} style={styles.logo} />
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Tên đăng nhập"
+            placeholder="Nhập số điện thoại"
             value={loginUser}
             onChangeText={(text) => setLoginUser(text)}
             left={<TextInput.Icon icon="account-outline" color="#6655D0"/>}
@@ -68,14 +72,21 @@ const SignInScreen: React.FC = () => {
           <TextInput
             style={styles.input}
             placeholder="Nhập mật khẩu"
-            secureTextEntry
+            secureTextEntry={!showPassword}
             value={loginPassword}
             onChangeText={(text) => setLoginPassword(text)}
             left={<TextInput.Icon icon="lock-outline" color="#6655D0" />}
+            right={
+              <TextInput.Icon
+                icon={showPassword ? 'eye-off' : 'eye'}
+                color="#9FADC0"
+                onPress={() => setShowPassword(!showPassword)}
+              />
+            }
             placeholderTextColor="#00000040"
           />
         </View>
-        <View style={styles.PasswordContainer}>
+      <View style={styles.PasswordContainer}>
           <CheckBox
             value={isChecked}
             onValueChange={setChecked}
@@ -86,28 +97,29 @@ const SignInScreen: React.FC = () => {
             <Text style={styles.forgotPassword}>{t('title:forgotPassword')}?</Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.button1} onPress={handleNavigateHome}>
+        <Text style={styles.button1} onPress={handleNavigateSignUp}>
           {t('button:SignIn')}
         </Text>
-        <Text style={styles.button2} onPress={handleNavigateHome}>
+        <Text style={styles.button2} onPress={handleNavigateSignUp}>
           {t('button:SignUp')}
         </Text>
-      </View>
+          <View style={styles.row}>
+          <TouchableOpacity style={styles.Iconbutton1}>
+            <Image source={IconFacebook} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Iconbutton2}>
+            <Image source={IconTikTok}  />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Iconbutton3}>
+            <Image source={IconZalo} />
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.row}>
-        <TouchableOpacity style={styles.Iconbutton1}>
-          <Image source={IconFacebook} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.Iconbutton2}>
-          <Image source={IconTikTok}  />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.Iconbutton3}>
-          <Image source={IconZalo} />
-        </TouchableOpacity>
+        <View style={styles.end}>
+          <Text style={styles.support}>{t('title:support')} :</Text>
+          <Text style={styles.number}> 0796.188.883</Text>
+        </View>
       </View>
-
-      <View>
-        <Text style={styles.support}>{t('title:support')}<Text style={styles.number}> : 0796.188.883</Text></Text>
       </View>
     </SafeAreaView>
   );

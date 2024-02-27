@@ -5,14 +5,15 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // AUTHENTICATION
 // import SignInScreen from '@/screens/Authentication/SignIn';
 import SignInScreen from './src/screens/Authentication/SignIn';
+import SignUpScreen from './src/screens/Authentication/SignUp';
 
 export type RootStackParams = {
   // AUTHENTICATION SCREENS
   SignInScreen: undefined;
+  SignUpScreen: undefined;
   // MAIN SCREENS
   MainScreen: undefined;
   HomeScreen: undefined;
-  SettingScreen: undefined;
 };
 
 const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
@@ -21,6 +22,11 @@ const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
     name: 'SignInScreen',
     component: SignInScreen,
   },
+
+  {
+    name:'SignUpScreen',
+    component:SignUpScreen,
+  }
 ];
 
 const RootStack = createNativeStackNavigator<RootStackParams>();

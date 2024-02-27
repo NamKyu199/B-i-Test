@@ -2,13 +2,19 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#6655D0',
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: 'Roboto',
-    width:375,
-    height:667,
+    width:393,
+    height:852,
+  },
+  backgroudcontainer:{
+    backgroundColor:'#FFFFFF',
+    width:393,
+    height:674,
+    top:70,
+    borderRadius:32,
   },
   inputContainer: {
     marginBottom: 15,
@@ -17,20 +23,26 @@ const styles = StyleSheet.create({
     marginTop:16,
   },
   input: {
-    height: 40,
-    width: 311,
+    height: 48,
+    width: 332,
     padding: 1,
-    marginTop: 15,
+    marginTop: 10,
     backgroundColor:'#FFFFFF',
-    borderRadius: 8,
+    borderRadius: 24,
     marginVertical: 5,
     paddingHorizontal: 10,
   },
+  Poster: {
+    position: 'absolute',  
+    top: 18,               
+    left: 200,              
+    width: 190,
+    height: 190,
+    zIndex: 999,
+  },
   center: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20, 
   },
   // languagesBox: {
   //   flexDirection: 'row',
@@ -39,22 +51,22 @@ const styles = StyleSheet.create({
   //   gap: 10,
   // },
   button1: {
-    backgroundColor: '#D252A5',
+    backgroundColor: '#EB2F96',
     fontFamily: 'Roboto',
     color: 'white',
     padding: 10,
-    width: 311, 
+    width: 332, 
     height: 40,
     borderRadius: 8,
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: 30,
   },
   button2: {
     backgroundColor: '#6655D0',
     fontFamily: 'Roboto',
     color: 'white',
     padding: 10,
-    width: 311, 
+    width: 332, 
     height: 40,
     borderRadius: 8,
     textAlign: 'center',
@@ -66,29 +78,43 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
   },
-  title: {
-    color: '#00000073',
-    fontSize: 12,
+
+  heading_title :{
+    fontSize:28,
+    color:'#FFFFFF',
+    right:80,
+    fontWeight: 'bold',
     fontFamily: 'Roboto',
-    textAlign: 'center',
-    marginTop: 15, 
   },
+
+  heading_title_item:{
+    top:5,
+    width:162,
+    height:44,
+    fontSize:16,
+    color:'#FFFFFF',
+    right:80,
+    lineHeight:22,
+    justifyContent: 'space-between', 
+    opacity: 0.5
+  },
+
   centerText: {
     textAlign: 'center',
     marginVertical: 10,
   },
   logo: {
-    width: 129, 
-    height: 200, 
+    width: 190.12, 
+    height: 72.33, 
     resizeMode: 'contain',
-    marginTop: 36,
+    marginTop: 5,
   },
 
   PasswordContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between', 
-    marginTop: 44, 
+    marginTop: 12, 
     margin: 5,
   },
   checkbox:{
@@ -118,61 +144,67 @@ const styles = StyleSheet.create({
   },
   row:{
       flexDirection: 'row',
+      top:39,
     },
   Iconbutton1: {
-    backgroundColor: '#4772CD', 
+    width:32,
+    height:32,
     borderRadius: 20, 
-    padding: 1, 
     margin: 1,
     marginRight: 15,
   },
   Iconbutton2: {
-    backgroundColor: '#333333', 
+    width:32,
+    height:32,
     borderRadius: 20, 
-    padding: 1, 
     margin: 1,
     marginRight: 15,
   },
   Iconbutton3: {
-    backgroundColor: '#0068FF', 
+    width:32,
+    height:32,
     borderRadius: 20,
-    padding: 1, 
     margin: 1,
   },
 
   support: {
     fontSize: 14, 
-    marginTop:12,
-    marginBottom:20,
-    color:"#333333"
+    color:"#333333",
+    fontFamily:"Roboto",
   },
   number: {
-    fontSize: 16,
-    color: '#BC4893',
+    fontSize: 18,
+    color: '#EB2F96',
     fontWeight: 'bold',
   },
-  dropdownContainer: {
-    height: 40,
-    marginBottom: 20,
+
+  end:{
+    alignItems: 'center',
+    justifyContent: 'space-between', 
+    top:50,
   },
-  dropdown: {
-    backgroundColor: '#fafafa',
-  },
-  dropdownItem: {
-    justifyContent: 'flex-start',
-  },
-  dropdownList: {
-    backgroundColor: '#fafafa',
-  },
+  // dropdownContainer: {
+  //   height: 40,
+  //   marginBottom: 20,
+  // },
+  // dropdown: {
+  //   backgroundColor: '#fafafa',
+  // },
+  // dropdownItem: {
+  //   justifyContent: 'flex-start',
+  // },
+  // dropdownList: {
+  //   backgroundColor: '#fafafa',
+  // },
   Textlanguage: {
     textAlign: 'center',
     marginTop: 10,
   },
-  languagesBox: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
-  },
+  // languagesBox: {
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   marginTop: 20,
+  // },
 });
 
 export default styles;
