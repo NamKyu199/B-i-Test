@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
-import { SafeAreaView, Text, TouchableOpacity, View, Image } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity, View, Image,KeyboardAvoidingView } from 'react-native';
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
@@ -37,14 +37,10 @@ const SignInScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <SafeAreaView style={styles.container}>
       <View >
-        <Text style={styles.heading_title}>{t('title:title')}</Text>
-        <Text style={styles.heading_title_item}>{t('title:title_signin')}</Text>
-      </View>
-      <Image source={PosterMidu} style={[styles.Poster, { zIndex: 999 }]} />
-      <View style={styles.backgroudcontainer}>
-              {/* <View style={styles.languagesBox}>
+      {/* <View style={styles.languagesBox}>
         <RNPickerSelect
           onValueChange={(value) => handleChangeLanguage(value)}
           items={[
@@ -58,6 +54,11 @@ const SignInScreen: React.FC = () => {
        <Text style={styles.centerText}>
         {t('common:currentLanguage')}: {language}
       </Text> */}
+        <Text style={styles.heading_title}>{t('title:title')}</Text>
+        <Text style={styles.heading_title_item}>{t('title:title_signin')}</Text>
+      </View>
+      <Image source={PosterMidu} style={[styles.Poster, { zIndex: 999 }]} />
+      <View style={styles.backgroudcontainer}>
       <View style={styles.center}>
       <Image source={MiduBanner} style={styles.logo} />
         <View style={styles.inputContainer}>
@@ -122,6 +123,8 @@ const SignInScreen: React.FC = () => {
       </View>
       </View>
     </SafeAreaView>
+    </KeyboardAvoidingView>
+
   );
 };
 

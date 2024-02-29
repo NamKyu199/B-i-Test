@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     backgroundColor: '#6655D0',
     alignItems: 'center',
     justifyContent: 'center',
@@ -35,21 +36,21 @@ const styles = StyleSheet.create({
   Poster: {
     position: 'absolute',  
     top: 18,               
-    left: 200,              
-    width: 190,
-    height: 190,
+    left: 190,              
+    width: 210,
+    height: 209,
     zIndex: 999,
   },
   center: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  // languagesBox: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'center',
-  //   marginVertical: 10, // Adjusted margin for better spacing
-  //   gap: 10,
-  // },
+  languagesBox: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 10, // Adjusted margin for better spacing
+    gap: 10,
+  },
   button1: {
     backgroundColor: '#EB2F96',
     fontFamily: 'Roboto',
@@ -80,6 +81,9 @@ const styles = StyleSheet.create({
   },
 
   heading_title :{
+    width:127,
+    height:39,
+    marginTop:70,
     fontSize:28,
     color:'#FFFFFF',
     right:80,
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
   },
 
   heading_title_item:{
-    top:5,
+    marginTop:0,
     width:162,
     height:44,
     fontSize:16,
@@ -107,7 +111,7 @@ const styles = StyleSheet.create({
     width: 190.12, 
     height: 72.33, 
     resizeMode: 'contain',
-    marginTop: 5,
+    marginTop: 32,
   },
 
   PasswordContainer: {

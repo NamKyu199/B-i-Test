@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   backgroudcontainer:{
     backgroundColor:'#FFFFFF',
     width:393,
-    height:674,
+    height:630,
     borderRadius:32,
     marginTop:30,
     alignItems: 'center',
@@ -55,18 +55,18 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     width:361,
-    height:304,
+    height:350,
     gap:16,
-    marginTop:88,
+    marginTop:10,
   },
   input: {
     height: 48,
-    width: 332,
-    marginTop: 10,
+    width: 361,
+    marginTop: 1,
     backgroundColor:'#FFFFFF',
     borderRadius: 10,
-    borderWidth: 0.9,   // Độ dày của viền
-    borderColor: 'gray',  // Màu sắc của viền
+    borderWidth: 0.9,   
+    borderColor: 'gray', 
     marginVertical: 5,
   },
 });
