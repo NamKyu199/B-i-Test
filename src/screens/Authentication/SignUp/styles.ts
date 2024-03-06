@@ -69,6 +69,16 @@ const styles = StyleSheet.create({
     borderColor: 'gray', 
     marginVertical: 5,
   },
+  inputaddress:{
+    height: 70,
+    width: 361,
+    marginTop: 1,
+    backgroundColor:'#FFFFFF',
+    borderRadius: 10,
+    borderWidth: 0.9,   
+    borderColor: 'gray', 
+    marginVertical: 5,
+  }
 });
 
 export default styles;
