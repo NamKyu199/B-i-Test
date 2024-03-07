@@ -78,7 +78,29 @@ const styles = StyleSheet.create({
     borderWidth: 0.9,   
     borderColor: 'gray', 
     marginVertical: 5,
-  }
+  },
+  sheetContainer: {
+    backgroundColor: '#fff', // Màu nền của bottom sheet
+  },
+  contentContainer: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  otpInput: {
+    width: '100%',
+    height: 100,
+    color: '#000', // Màu chữ của mã OTP
+  },
+  underlineStyleBase: {
+    width: 30, // Chiều rộng của mỗi ô nhập mã
+    height: 45, // Chiều cao của mỗi ô nhập mã
+    borderWidth: 0, // Độ dày đường kẻ dưới mỗi ô nhập mã
+    borderBottomWidth: 2, // Độ dày đường kẻ dưới mỗi ô nhập mã
+    color: '#000', // Màu chữ của mỗi ô nhập mã
+  },
+  underlineStyleHighLighted: {
+    borderColor: '#fe7013', // Màu đường kẻ dưới khi ô nhập mã được focus
+  },
 });
 
 export default styles;
