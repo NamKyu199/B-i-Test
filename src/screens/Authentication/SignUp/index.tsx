@@ -37,6 +37,10 @@ const SignUpScreen: React.FC = () => {
   const [District, setDistrict] = useState('');
   const [Address, setAddress] = useState('');
 
+  const handleNavigateSuccessful = () => {
+    navigation.navigate('SuccessfulScreen');
+  };
+
   const handleNavigateBack = () => {
     navigation.goBack();
   };
@@ -249,7 +253,7 @@ const SignUpScreen: React.FC = () => {
           <TouchableOpacity style={styles.prevButton} onPress={onPrevStep}>
             <Text style={styles.prevButtonText}>Back</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.nextButton} onPress={onNextStep}>
+          <TouchableOpacity style={styles.nextButton} onPress={handleNavigateSuccessful}>
             <Text style={styles.nextButtonText}>Nhận mã xác thực qua SMS</Text>
           </TouchableOpacity>
         </View>
@@ -257,51 +261,51 @@ const SignUpScreen: React.FC = () => {
     );
   };
   
-  const Step3: React.FC = () => {
-    const bottomSheetRef = useRef<BottomSheet>(null);
+  // const Step3: React.FC = () => {
+  //   const bottomSheetRef = useRef<BottomSheet>(null);
   
-    const snapPoints = useMemo(() => ['60%'], []);
+  //   const snapPoints = useMemo(() => ['60%'], []);
   
-    const onPrevStep = () => {
-      // Thực hiện các xử lý khi nhấn nút quay lại ở bước 3
-      console.log('Go back to previous step in Step3');
-    };
+  //   const onPrevStep = () => {
+  //     // Thực hiện các xử lý khi nhấn nút quay lại ở bước 3
+  //     console.log('Go back to previous step in Step3');
+  //   };
   
-    const onCodeFilled = (code: string) => {
-      console.log(`Code is ${code}, you are good to go!`);
-      bottomSheetRef.current?.close();
-      // Thực hiện các xử lý khi mã OTP được nhập đúng
-    };
-    return (
-      <View style={{ alignItems: 'center' }}>
-        <BottomSheet
-          ref={bottomSheetRef}
-          snapPoints={snapPoints}
-          bottomInset={46}
-          detached={true}
-          style={styles.sheetContainer}
-        >
-          <View style={styles.contentContainer}>
-            <OTPInputView
-              ref={otpInputRef}
-              style={styles.otpInput}
-              pinCount={4}
-              autoFocusOnLoad
-              codeInputFieldStyle={styles.underlineStyleBase}
-              codeInputHighlightStyle={styles.underlineStyleHighLighted}
-              onCodeFilled={onCodeFilled}
-            />
-          </View>
-          <TouchableOpacity style={styles.prevButton} onPress={onPrevStep}>
-            <Text style={styles.prevButtonText}>Back</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.prevButton} onPress={onSubmitSteps}>
-            <Text style={styles.prevButtonText}>Xác nhận</Text>
-          </TouchableOpacity>
-        </BottomSheet>
-      </View>
-    );
-  };
+  //   const onCodeFilled = (code: string) => {
+  //     console.log(`Code is ${code}, you are good to go!`);
+  //     bottomSheetRef.current?.close();
+  //     // Thực hiện các xử lý khi mã OTP được nhập đúng
+  //   };
+  //   return (
+  //     <View style={{ alignItems: 'center' }}>
+  //       <BottomSheet
+  //         ref={bottomSheetRef}
+  //         snapPoints={snapPoints}
+  //         bottomInset={46}
+  //         detached={true}
+  //         style={styles.sheetContainer}
+  //       >
+  //         <View style={styles.contentContainer}>
+  //           <OTPInputView
+  //             ref={otpInputRef}
+  //             style={styles.otpInput}
+  //             pinCount={4}
+  //             autoFocusOnLoad
+  //             codeInputFieldStyle={styles.underlineStyleBase}
+  //             codeInputHighlightStyle={styles.underlineStyleHighLighted}
+  //             onCodeFilled={onCodeFilled}
+  //           />
+  //         </View>
+  //         <TouchableOpacity style={styles.prevButton} onPress={onPrevStep}>
+  //           <Text style={styles.prevButtonText}>Back</Text>
+  //         </TouchableOpacity>
+  //         <TouchableOpacity style={styles.prevButton} onPress={onSubmitSteps}>
+  //           <Text style={styles.prevButtonText}>Xác nhận</Text>
+  //         </TouchableOpacity>
+  //       </BottomSheet>
+  //     </View>
+  //   );
+  // };
 
   return (
     <SafeAreaView style={styles.container}>

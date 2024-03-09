@@ -6,5 +6,7 @@ export default {
     title_signup:'Please enter your information to SignUp',
     rememberPassword: 'RememberPassword',
     forgotPassword:"ForgotPassword",
-    support:'Support'
+    support:'Support',
+    happy_heading:'Congratulation !',
+    heading:'Bạn đã đăng ký You have successfully registered an account '
   };

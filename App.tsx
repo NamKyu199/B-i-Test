@@ -6,11 +6,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // import SignInScreen from '@/screens/Authentication/SignIn';
 import SignInScreen from './src/screens/Authentication/SignIn';
 import SignUpScreen from './src/screens/Authentication/SignUp';
+import SuccessfulScreen from './src/screens/Authentication/Successful';
 
 export type RootStackParams = {
   // AUTHENTICATION SCREENS
   SignInScreen: undefined;
   SignUpScreen: undefined;
+  SuccessfulScreen:undefined;
   // MAIN SCREENS
   MainScreen: undefined;
   HomeScreen: undefined;
@@ -26,6 +28,11 @@ const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
   {
     name:'SignUpScreen',
     component:SignUpScreen,
+  },
+
+  {
+    name:'SuccessfulScreen',
+    component:SuccessfulScreen,
   }
 ];
 
