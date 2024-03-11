@@ -8,6 +8,13 @@ export default {
     forgotPassword:'Quên mật khẩu',
     support:'Liên hệ hỗ trợ',
     header:'Chúc mừng bạn !',
-    heading:'Bạn đã đăng ký tài khoản thành công'
+    heading:'Bạn đã đăng ký tài khoản thành công',
+    account_is_locked:'Tài khoản của bạn đã bị khóa',
+    comment1:'Do không đăng nhập hoặc không phát sinh đơn hàng trong một khoảng thời gian.',
+    comment2:'Vui lòng bấm nút gửi yêu cầu kích hoạt lại bên dưới để Admin xem xét và mở lại tài khoản',
+    request_sent_successfully:'Gửi yêu cầu thành công.',
+    comment:'Vui lòng chờ Admin duyệt',
+    title_error:'Oops!!!',
+    title_signin_error:'Tài khoản của bạn đang bị lỗi',
   };
   

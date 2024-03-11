@@ -8,5 +8,12 @@ export default {
     forgotPassword:"ForgotPassword",
     support:'Support',
     happy_heading:'Congratulation !',
-    heading:'Bạn đã đăng ký You have successfully registered an account '
+    heading:'You have successfully registered an account ',
+    account_is_locked:'Account is locked',
+    comment1:'Due to not logging in or not generating orders for a period of time.',
+    comment2:'Please click the submit reactivation request button below for Admin to review and reopen your account',
+    request_sent_successfully:'Request sent successfully',
+    comment:'Please wait for Admin approval',
+    title_error:'Oops!!!',
+    title_signin_error:'Your account is in error.',
   };

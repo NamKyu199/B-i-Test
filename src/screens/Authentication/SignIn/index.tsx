@@ -6,7 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import { TextInput } from 'react-native-paper';
-import RNPickerSelect from 'react-native-picker-select';
+// import RNPickerSelect from 'react-native-picker-select';
 
 import i18n from '../../../translations/i18n';
 import styles from './styles';
@@ -34,6 +34,10 @@ const SignInScreen: React.FC = () => {
 
   const handleNavigateSignUp = () => {
     navigation.navigate('SignUpScreen');
+  };
+
+  const handleNavigateNotification = () => {
+    navigation.navigate('NotificationScreen');
   };
 
   return (
@@ -98,7 +102,7 @@ const SignInScreen: React.FC = () => {
             <Text style={styles.forgotPassword}>{t('title:forgotPassword')}?</Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.button1} onPress={handleNavigateSignUp}>
+        <Text style={styles.button1} onPress={handleNavigateNotification}>
           {t('button:SignIn')}
         </Text>
         <Text style={styles.button2} onPress={handleNavigateSignUp}>

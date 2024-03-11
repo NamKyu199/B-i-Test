@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   Happyposter: {
     width: 259,
     height: 259,
-    marginTop: 120, // Adjust this value to center the image
+    marginTop: 100, // Adjust this value to center the image
   },
   heading_title: {
     flex: 1,
