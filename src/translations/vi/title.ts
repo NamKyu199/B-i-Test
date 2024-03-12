@@ -16,5 +16,6 @@ export default {
     comment:'Vui lòng chờ Admin duyệt',
     title_error:'Oops!!!',
     title_signin_error:'Tài khoản của bạn đang bị lỗi',
+    Create_new_order:'Tạo mới đơn hàng',
   };
   

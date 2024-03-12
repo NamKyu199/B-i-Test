@@ -40,6 +40,9 @@ const SignInScreen: React.FC = () => {
     navigation.navigate('NotificationScreen');
   };
 
+  const handleNavigateOrder = () => {
+    navigation.navigate('OrderScreen');
+  };
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <SafeAreaView style={styles.container}>
@@ -103,6 +106,9 @@ const SignInScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
         <Text style={styles.button1} onPress={handleNavigateNotification}>
+          {t('button:SignIn')}
+        </Text>
+        <Text style={styles.button1} onPress={handleNavigateOrder}>
           {t('button:SignIn')}
         </Text>
         <Text style={styles.button2} onPress={handleNavigateSignUp}>

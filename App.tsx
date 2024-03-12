@@ -9,6 +9,7 @@ import SignUpScreen from './src/screens/Authentication/SignUp';
 import SuccessfulScreen from './src/screens/Authentication/Successful';
 import NotificationScreen from './src/screens/Authentication/Notification';
 import RequestScreen from './src/screens/Authentication/Request';
+import OrderScreen from './src/screens/Main/Order';
 
 export type RootStackParams = {
   // AUTHENTICATION SCREENS
@@ -20,6 +21,7 @@ export type RootStackParams = {
   // MAIN SCREENS
   MainScreen: undefined;
   HomeScreen: undefined;
+  OrderScreen:undefined;
 };
 
 const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
@@ -47,6 +49,11 @@ const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
   {
     name:'RequestScreen',
     component:RequestScreen,
+  },
+
+  {
+    name:'OrderScreen',
+    component:OrderScreen,
   },
 ];
 

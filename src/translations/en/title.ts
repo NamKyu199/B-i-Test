@@ -16,4 +16,5 @@ export default {
     comment:'Please wait for Admin approval',
     title_error:'Oops!!!',
     title_signin_error:'Your account is in error.',
+    Create_new_order:'Create new order',
   };
