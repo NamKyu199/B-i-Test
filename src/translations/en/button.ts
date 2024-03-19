@@ -4,5 +4,7 @@ export default {
     Home:'Home',
     Submit_a_reactivation_requestL:'Submit a reactivation request',
     Go_back_to_login:'Go back to login',
+    create_order:'Create orders',
+    Close:'Close',
   };
   
