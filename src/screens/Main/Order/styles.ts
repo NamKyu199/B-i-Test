@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width:393,
-    height:1732,
+    height:2000,
     backgroundColor: '#EEEEEE',
   },
 
@@ -391,6 +391,48 @@ address2:{
   right:70,
   marginTop:-14,
 },
+button1: {
+  width: 24,
+  height: 24,
+  fontSize:18,
+  textAlign: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 1,
+  borderStyle: 'solid',
+  borderColor: '#CCCCCC',
+  color:'#000000',
+},
+
+button2: {
+  width: 24,
+  height: 24,
+  textAlign: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 1.5,
+  borderStyle: 'solid',
+  borderColor: '#CCCCCC',
+  color:'#000000',
+
+},
+
+number:{
+  flex: 1,
+  width: 24,
+  height: 24,
+  textAlign: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 1,
+  borderStyle: 'solid',
+  borderColor: '#CCCCCC',
+  color:'#000000',
+},
+
 });
 
 export default styles;

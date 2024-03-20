@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, View, KeyboardAvoidingView,TouchableOpacity, TextInput, ScrollView, Modal,Image  } from 'react-native';
+import { SafeAreaView, Text, View, KeyboardAvoidingView,TouchableOpacity, TextInput, ScrollView,Image  } from 'react-native';
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
@@ -22,12 +22,18 @@ const OrderScreen: React.FC<SearchBarComponentProps> = () => {
   const [selectedId2, setSelectedId2] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [shippingFee, setShippingFee] = useState(0);
-  const [selectedProductIndex, setSelectedProductIndex] = useState<number | null>(null);
-  const [products, setProducts] = useState([
-    { name: 'Midu MenaQ7 360ml', discount: 10, price: 500000, image: require('./../../../assets/img/MenaQ7-360ml.png') },
-    { name: 'Midu MenaQ7 180mcg', discount: 20, price: 360000, image: require('./../../../assets/img/MenaQ7-180mcg.png') },
-  ]);
+  const [deliveryCharge, setDeliveryCharge] = useState(0);
+  const [displayedProducts, setDisplayedProducts] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const [products, setProducts] = useState([
+    { name: 'Midu MenaQ7 360ml', discount: '10%', price: '500000', quantity: 1, image: require('./../../../assets/img/MenaQ7-360ml.png') },
+    { name: 'Midu MenaQ7 180mcg', discount: '20%', price: '360000', quantity: 1, image: require('./../../../assets/img/MenaQ7-180mcg.png') },
+  ]);
+
+  // Hàm định dạng số với dấu chấm ngăn cách mỗi ba số
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 
   const handleChangeLanguage = (value: string) => {
     setLanguage(value);
@@ -45,9 +51,9 @@ const OrderScreen: React.FC<SearchBarComponentProps> = () => {
 // Trong hàm `handleAddProduct`, bạn cần cập nhật mảng sản phẩm để thêm trường `quantity` cho mỗi sản phẩm
 const handleAddProduct = () => {
   if (displayedProductCount < products.length) {
-    const updatedProducts = products.map(product => ({ ...product, quantity: 1 }));
+    const updatedProducts = products.slice(0, displayedProductCount + 1);
+    setDisplayedProducts(updatedProducts);
     setDisplayedProductCount(displayedProductCount + 1);
-    setProducts(updatedProducts);
   }
 };
 
@@ -66,22 +72,23 @@ const handleDecrease = (index) => {
   }
 };
 
+
 // Trong hàm `renderDisplayedProducts`, sử dụng `product.quantity` thay vì `quantity`
 const renderDisplayedProducts = () => {
-  return products.slice(0, displayedProductCount).map((product, index) => (
+  return displayedProducts.map((product, index) => (
     <View key={index} style={styles.productDetail}>
       <Image source={product.image} style={styles.productImage} />
       <View style={styles.from}>
         <Text style={styles.name}>{product.name}</Text>
-        <Text style={styles.sale}>{t('title:Discount')}{product.discount}%</Text>
-        <Text style={styles.money}>{product.price} đ</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={styles.sale}>{t('title:Discount')}{product.discount}</Text>
+        <Text style={styles.money}>{formatPrice(product.price)} đ</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', width: 80, height: 24 }}>
           <TouchableOpacity onPress={() => handleDecrease(index)}>
-            <Text style={styles.button}>-</Text>
+            <Text style={styles.button1}>-</Text>
           </TouchableOpacity>
           <Text style={styles.number}>{product.quantity}</Text>
           <TouchableOpacity onPress={() => handleIncrease(index)}>
-            <Text style={styles.button}>+</Text>
+            <Text style={styles.button2}>+</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -90,32 +97,56 @@ const renderDisplayedProducts = () => {
 };
 
   const radioButtons1 = [
-    { label: 'title:Seller_bears_the_fee', value: 'title:Seller_bears_the_fee' },
-    { label: 'title:Customer_bears_the_fee', value: 'title:Customer_bears_the_fee' },
+    { label: t ('title:Seller_bears_the_fee'), value: 'Seller bears the fee' },
+    { label: t ('title:Customer_bears_the_fee'), value: 'Customer bears the fee' },
   ];
 
   const radioButtons2 = [
     { label: 'VN Post', value: 'VN Post', price: 20000 },
-    { label: 'title:receive_at_warehouse', value: 'warehouse', price: 35000 },
-    { label: 'title:Send_to_the_garage', value: 'garage', price: 50000 },
+    { label: t('title:receive_at_warehouse'), value: 'warehouse', price: 35000 },
+    { label: t ('title:Send_to_the_garage'), value: 'garage', price: 50000 },
   ];
 
   const radioButtons3 = [
-    { label: 'Prepayment', value: 'prepayment' }
+    { label: t ('Prepayment'), value: 'prepayment' }
   ];
 
-  const handleRadioButton1Press = (value: string | React.SetStateAction<null>) => {
+  const handleRadioButton1Press = (value: string) => {
     setSelectedId1(value);
+    if (value === 'Seller bears the fee') {
+      setTotalPayment(totalOrderValue);
+      setDeliveryCharge(0);
+    } else {
+      setTotalPayment(totalOrderValue + shippingFee);
+      setDeliveryCharge(shippingFee);
+    }
   };
-
+  
   const handleRadioButton2Press = (value: string | React.SetStateAction<null>, price: React.SetStateAction<number>) => {
     setSelectedId2(value);
-    setShippingFee(price);
+    setShippingFee(price); // Cập nhật giá trị của phí vận chuyển
+    setDeliveryCharge(price); // Giả sử phí giao hàng bằng giá trị phí vận chuyển
   };
+
+  const totalOrderValue = displayedProducts.reduce((total, product) => {
+    const productPrice = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+    return total + (product.quantity * productPrice);
+  }, 0);
+
+  const discountValue = displayedProducts.reduce((total, product) => {
+    const productPrice = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+    const discountAmount = parseFloat(product.discount.replace('%', '')); // Chuyển đổi phần trăm chiết khấu thành số
+    const discountPricePerItem = (productPrice * discountAmount) / 100;
+    const totalDiscountPrice = discountPricePerItem * product.quantity; // Tính tổng giá trị chiết khấu cho mỗi sản phẩm
+    return total + totalDiscountPrice;
+  }, 0);
+
+  const totalPayment = totalOrderValue - discountValue + shippingFee;
+  
 
   return (
     <ScrollView>
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <KeyboardAvoidingView  style={styles.container}>
         <SafeAreaView>
           <View style={styles.header}>
             <Ionicons style={styles.back} onPress={handleNavigateBack} name="chevron-back" size={20} color="#fff" />
@@ -180,7 +211,7 @@ const renderDisplayedProducts = () => {
               ))}
               <View style={styles.transport_fee}>
                 <Text style={styles.priceText1}>{t('title:transport_fee')} :</Text>
-                <Text style={styles.priceText2}>{shippingFee} đ </Text>
+                <Text style={styles.priceText2}>{formatPrice(shippingFee)} đ </Text>
               </View>
             </View>
             <View style={styles.payment}>
@@ -201,7 +232,7 @@ const renderDisplayedProducts = () => {
               <Text style={styles.title}>{t('title:describe')}</Text>
               <TextInput
                 style={styles.describe_style}
-                placeholder='title:Enter_your_message_Midu'
+                placeholder={t('title:Enter description')}
                 value={describe}
                 onChangeText={(text) => setDescribe(text)}
               />
@@ -210,30 +241,30 @@ const renderDisplayedProducts = () => {
               <Text style={styles.title}>{t('title:pay')}</Text>
                 <View style={styles.order_value}>
                   <Text>{t('title:order_value')}</Text>
-                  <Text>0 đ</Text>
+                  <Text>{formatPrice(totalOrderValue)} đ</Text>
                 </View>
 
                 <View style={styles.discount}>
                   <Text>{t('title:discount')}</Text>
-                  <Text>0 đ</Text>
+                  <Text>{formatPrice(discountValue)} đ</Text>
                 </View>
 
                 <View style={styles.Delivery_charges}>
                   <Text>{t('title:Delivery_charges')}</Text>
-                  <Text>0 đ</Text>
+                  <Text>{formatPrice(deliveryCharge)} đ</Text>
                 </View>
 
                 <View style={styles.total_payment}>
                   <Text>{t('title:total_payment')}</Text>
-                  <Text>0 đ</Text>
+                  <Text>{formatPrice(totalPayment)} đ</Text>
                 </View>
                 <View style={styles.Total_amount_the_order_needs_to_pay}>
                     <Text style={styles.blue}>{t('title:Total_amount_the_order_needs_to_pay')}</Text>
-                    <Text style={styles.blue}>0 đ</Text>
+                    <Text>{formatPrice(totalPayment)} đ</Text>
                 </View>
                 <View style={styles.Delivery_fee_needs_to_be_paid_by_the_customer}>
                     <Text style={styles.pink}>{t('title:Delivery_fee_needs_to_be_paid_by_the_customer')}</Text>
-                    <Text style={styles.pink}>0 đ</Text>
+                    <Text style={styles.pink}>{formatPrice(deliveryCharge)} đ</Text>
                  </View>
             </View>
             <View>
@@ -249,7 +280,11 @@ const renderDisplayedProducts = () => {
 };
 
 export default OrderScreen;
-function onPressIncrease(index: any) {
+function onPressIncrease(_index: any) {
+  throw new Error('Function not implemented.');
+}
+
+function renderItem(_info: ListRenderItemInfo<{ name: string; discount: number; price: number; image: any; }>): ReactElement<any, string | JSXElementConstructor<any>> | null {
   throw new Error('Function not implemented.');
 }
 
