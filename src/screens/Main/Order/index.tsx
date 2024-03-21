@@ -22,9 +22,9 @@ const OrderScreen: React.FC<SearchBarComponentProps> = () => {
   const [selectedId2, setSelectedId2] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [shippingFee, setShippingFee] = useState(0);
+  const [takeCharge,setTakeCharge] = useState(0);
   const [deliveryCharge, setDeliveryCharge] = useState(0);
   const [displayedProducts, setDisplayedProducts] = useState([]);
-  const [quantity, setQuantity] = useState(1);
   const [products, setProducts] = useState([
     { name: 'Midu MenaQ7 360ml', discount: '10%', price: '500000', quantity: 1, image: require('./../../../assets/img/MenaQ7-360ml.png') },
     { name: 'Midu MenaQ7 180mcg', discount: '20%', price: '360000', quantity: 1, image: require('./../../../assets/img/MenaQ7-180mcg.png') },
@@ -114,18 +114,28 @@ const renderDisplayedProducts = () => {
   const handleRadioButton1Press = (value: string) => {
     setSelectedId1(value);
     if (value === 'Seller bears the fee') {
-      setTotalPayment(totalOrderValue);
-      setDeliveryCharge(0);
+      if (selectedId2 === 'VN Post' || selectedId2 === 'warehouse' || selectedId2 === 'garage') {
+        setTakeCharge(totalOrderValue - discountValue - shippingFee);
+        setDeliveryCharge(shippingFee);
+      } else {
+        setTakeCharge(totalOrderValue - discountValue - shippingFee - shippingFee);
+        setDeliveryCharge(shippingFee);
+      }
     } else {
-      setTotalPayment(totalOrderValue + shippingFee);
-      setDeliveryCharge(shippingFee);
+      if (selectedId2 === 'VN Post' || selectedId2 === 'warehouse' || selectedId2 === 'garage') {
+        setTakeCharge(totalOrderValue + shippingFee - discountValue);
+        setDeliveryCharge(0);
+      } else {
+        setTakeCharge(totalOrderValue - discountValue);
+        setDeliveryCharge(0);
+      }
     }
   };
   
   const handleRadioButton2Press = (value: string | React.SetStateAction<null>, price: React.SetStateAction<number>) => {
     setSelectedId2(value);
-    setShippingFee(price); // Cập nhật giá trị của phí vận chuyển
-    setDeliveryCharge(price); // Giả sử phí giao hàng bằng giá trị phí vận chuyển
+    setShippingFee(price); 
+    setDeliveryCharge(price); 
   };
 
   const totalOrderValue = displayedProducts.reduce((total, product) => {
@@ -141,7 +151,7 @@ const renderDisplayedProducts = () => {
     return total + totalDiscountPrice;
   }, 0);
 
-  const totalPayment = totalOrderValue - discountValue + shippingFee;
+  const totalPayment = takeCharge + deliveryCharge;
   
 
   return (
@@ -251,7 +261,7 @@ const renderDisplayedProducts = () => {
 
                 <View style={styles.Delivery_charges}>
                   <Text>{t('title:Delivery_charges')}</Text>
-                  <Text>{formatPrice(deliveryCharge)} đ</Text>
+                  <Text>{formatPrice(shippingFee)} đ</Text>
                 </View>
 
                 <View style={styles.total_payment}>
@@ -260,7 +270,7 @@ const renderDisplayedProducts = () => {
                 </View>
                 <View style={styles.Total_amount_the_order_needs_to_pay}>
                     <Text style={styles.blue}>{t('title:Total_amount_the_order_needs_to_pay')}</Text>
-                    <Text>{formatPrice(totalPayment)} đ</Text>
+                    <Text>{formatPrice(takeCharge)} đ</Text>
                 </View>
                 <View style={styles.Delivery_fee_needs_to_be_paid_by_the_customer}>
                     <Text style={styles.pink}>{t('title:Delivery_fee_needs_to_be_paid_by_the_customer')}</Text>
@@ -285,6 +295,10 @@ function onPressIncrease(_index: any) {
 }
 
 function renderItem(_info: ListRenderItemInfo<{ name: string; discount: number; price: number; image: any; }>): ReactElement<any, string | JSXElementConstructor<any>> | null {
+  throw new Error('Function not implemented.');
+}
+
+function setTakeCharge(totalOrderValue: number) {
   throw new Error('Function not implemented.');
 }
 
