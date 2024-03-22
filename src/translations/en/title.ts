@@ -34,4 +34,8 @@ export default {
     Delivery_fee_needs_to_be_paid_by_the_customer:'Delivery fee needs to be paid by the customer',
     Add_Product:'+ Add Product',
     Discount:'Discount',
+    receive_at_warehouse:'Receive at warehouse',
+    Send_to_the_garage:'Send to the garage',
+    Prepayment:'Advance payment (Bank transfer)',
+    Enter_a_message_for_MIDU:'Enter a message for MIDU',
   };

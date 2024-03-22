@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, Text, View, KeyboardAvoidingView,TouchableOpacity, TextInput, ScrollView,Image  } from 'react-native';
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,7 +20,6 @@ const OrderScreen: React.FC<SearchBarComponentProps> = () => {
   const [describe, setDescribe] = useState("");
   const [selectedId1, setSelectedId1] = useState<string | null>(null);
   const [selectedId2, setSelectedId2] = useState<string | null>(null);
-  const [selectedId, setSelectedId] = useState<number | null>(null);
   const [shippingFee, setShippingFee] = useState(0);
   const [takeCharge,setTakeCharge] = useState(0);
   const [deliveryCharge, setDeliveryCharge] = useState(0);
@@ -59,19 +58,18 @@ const handleAddProduct = () => {
 
 // Thêm index vào hàm `handleIncrease` và `handleDecrease` để xác định sản phẩm cụ thể được tăng hoặc giảm số lượng
 const handleIncrease = (index) => {
-  const newProducts = [...products];
-  newProducts[index].quantity += 1;
-  setProducts(newProducts);
+  const newDisplayedProducts = [...displayedProducts];
+  newDisplayedProducts[index].quantity += 1;
+  setDisplayedProducts(newDisplayedProducts);
 };
 
 const handleDecrease = (index) => {
-  const newProducts = [...products];
-  if (newProducts[index].quantity > 1) {
-    newProducts[index].quantity -= 1;
-    setProducts(newProducts);
+  const newDisplayedProducts = [...displayedProducts];
+  if (newDisplayedProducts[index].quantity > 1) {
+    newDisplayedProducts[index].quantity -= 1;
+    setDisplayedProducts(newDisplayedProducts);
   }
 };
-
 
 // Trong hàm `renderDisplayedProducts`, sử dụng `product.quantity` thay vì `quantity`
 const renderDisplayedProducts = () => {
@@ -108,8 +106,23 @@ const renderDisplayedProducts = () => {
   ];
 
   const radioButtons3 = [
-    { label: t ('Prepayment'), value: 'prepayment' }
+    { label: t ('title:Prepayment'), value: 'prepayment' }
   ];
+
+  const totalOrderValue = displayedProducts.reduce((total, product) => {
+    const productPrice = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+    return  total + (product.quantity * productPrice);
+  }, 0);
+
+  const discountValue = displayedProducts.reduce((total, product) => {
+    const productPrice = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
+    const discountAmount = parseFloat(product.discount.replace('%', '')); // Chuyển đổi phần trăm chiết khấu thành số
+    const discountPricePerItem = (productPrice * discountAmount) / 100;
+    const totalDiscountPrice = discountPricePerItem * product.quantity; // Tính tổng giá trị chiết khấu cho mỗi sản phẩm
+    return total + totalDiscountPrice;
+  }, 0);
+
+  const totalPayment = takeCharge + deliveryCharge;
 
   const handleRadioButton1Press = (value: string) => {
     setSelectedId1(value);
@@ -138,20 +151,7 @@ const renderDisplayedProducts = () => {
     setDeliveryCharge(price); 
   };
 
-  const totalOrderValue = displayedProducts.reduce((total, product) => {
-    const productPrice = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
-    return total + (product.quantity * productPrice);
-  }, 0);
 
-  const discountValue = displayedProducts.reduce((total, product) => {
-    const productPrice = typeof product.price === 'string' ? parseFloat(product.price) : product.price;
-    const discountAmount = parseFloat(product.discount.replace('%', '')); // Chuyển đổi phần trăm chiết khấu thành số
-    const discountPricePerItem = (productPrice * discountAmount) / 100;
-    const totalDiscountPrice = discountPricePerItem * product.quantity; // Tính tổng giá trị chiết khấu cho mỗi sản phẩm
-    return total + totalDiscountPrice;
-  }, 0);
-
-  const totalPayment = takeCharge + deliveryCharge;
   
 
   return (
@@ -242,7 +242,7 @@ const renderDisplayedProducts = () => {
               <Text style={styles.title}>{t('title:describe')}</Text>
               <TextInput
                 style={styles.describe_style}
-                placeholder={t('title:Enter description')}
+                placeholder={t('title:Enter_a_message_for_MIDU')}
                 value={describe}
                 onChangeText={(text) => setDescribe(text)}
               />
@@ -270,11 +270,11 @@ const renderDisplayedProducts = () => {
                 </View>
                 <View style={styles.Total_amount_the_order_needs_to_pay}>
                     <Text style={styles.blue}>{t('title:Total_amount_the_order_needs_to_pay')}</Text>
-                    <Text>{formatPrice(takeCharge)} đ</Text>
+                    <Text style={styles.blue1}>{formatPrice(takeCharge)} đ</Text>
                 </View>
                 <View style={styles.Delivery_fee_needs_to_be_paid_by_the_customer}>
                     <Text style={styles.pink}>{t('title:Delivery_fee_needs_to_be_paid_by_the_customer')}</Text>
-                    <Text style={styles.pink}>{formatPrice(deliveryCharge)} đ</Text>
+                    <Text style={styles.pink1}>{formatPrice(deliveryCharge)} đ</Text>
                  </View>
             </View>
             <View>

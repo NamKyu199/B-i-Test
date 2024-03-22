@@ -35,5 +35,10 @@ export default {
     Delivery_fee_needs_to_be_paid_by_the_customer:'Phí giao hàng khách hàng cần trả',
     Add_Product:'+ Thêm sản phẩm',
     Discount:'Chiết khấu',
+    Customer_bears_the_fee:'Khách hàng chịu phí',
+    receive_at_warehouse:'Nhận hàng tại kho',
+    Send_to_the_garage:'Gửi nhà xe',
+    Prepayment:'Thanh toán trước (Chuyển khoản ngân hàng)',
+    Enter_a_message_for_MIDU:'Nhập lời nhắn cho MIDU',
   };
   

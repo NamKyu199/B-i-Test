@@ -268,6 +268,10 @@ Total_amount_the_order_needs_to_pay:{
 blue:{
   color:'#6655D0',
 },
+blue1:{
+  right:15,
+  color:'#6655D0',
+},
 Delivery_fee_needs_to_be_paid_by_the_customer:{
   width: 360,
   height: 22,
@@ -278,6 +282,10 @@ Delivery_fee_needs_to_be_paid_by_the_customer:{
   left:15,
 },
 pink:{
+  color:'#EB2F96',
+},
+pink1:{
+  right:15,
   color:'#EB2F96',
 },
 create_order:{
