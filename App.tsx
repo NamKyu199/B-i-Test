@@ -10,6 +10,7 @@ import NotificationScreen from '@/screens/Authentication/Notification';
 import RequestScreen from '@/screens/Authentication/Request';
 import OrderScreen from '@/screens/Main/Order';
 import HomeScreen from '@/screens/Main/Home';
+import RoseScreen from '@/screens/Main/Cumulative_commissions';
 
 export type RootStackParams = {
   // AUTHENTICATION SCREENS
@@ -22,6 +23,7 @@ export type RootStackParams = {
   MainScreen: undefined;
   HomeScreen: undefined;
   OrderScreen:undefined;
+  RoseScreen:undefined;
 };
 
 const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
@@ -60,6 +62,11 @@ const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
     name:'HomeScreen',
     component:HomeScreen,
   },
+
+  {
+    name:'RoseScreen',
+    component:RoseScreen,
+  }
 ];
 
 const RootStack = createNativeStackNavigator<RootStackParams>();

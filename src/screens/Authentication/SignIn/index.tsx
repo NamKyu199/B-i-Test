@@ -115,9 +115,9 @@ const SignInScreen: React.FC = () => {
         <Text style={styles.button1} onPress={handleNavigateHome}>
           {t('button:SignIn')}
         </Text>
-        <Text style={styles.button1} onPress={handleNavigateOrder}>
+        {/* <Text style={styles.button1} onPress={handleNavigateOrder}>
           {t('button:SignIn')}
-        </Text>
+        </Text> */}
         <Text style={styles.button2} onPress={handleNavigateSignUp}>
           {t('button:SignUp')}
         </Text>

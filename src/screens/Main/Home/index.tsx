@@ -34,6 +34,10 @@ const HomeScreen: React.FC<SearchBarComponentProps> = () => {
       navigation.navigate('SignInScreen');
     };
 
+    const handleNavigateRose = () => {
+      navigation.navigate('RoseScreen');
+    };
+
   
     return (
       <ScrollView>
@@ -68,8 +72,10 @@ const HomeScreen: React.FC<SearchBarComponentProps> = () => {
                     <Text style={styles.main_heading2}>{t('title:Discount_amount')}</Text>
                 </View>
                 <View style={styles.Profile_Accumulation}>
+                  <TouchableOpacity onPress={handleNavigateRose}>
                     <Image source={Accumulation} style={styles.accumulation} />
                     <Text style={styles.main_heading3}>{t('title:Accumulation')}</Text>
+                  </TouchableOpacity>
                 </View>
                 <View style={styles.Profile_user}>
                   <Image source={Approve} style={styles.approve} />
