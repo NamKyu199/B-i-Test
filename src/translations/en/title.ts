@@ -38,4 +38,7 @@ export default {
     Send_to_the_garage:'Send to the garage',
     Prepayment:'Advance payment (Bank transfer)',
     Enter_a_message_for_MIDU:'Enter a message for MIDU',
+    Profile:'Profile',
+    Drugstore:'Drugstore ABC',
+
   };

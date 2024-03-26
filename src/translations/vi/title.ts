@@ -40,5 +40,16 @@ export default {
     Send_to_the_garage:'Gửi nhà xe',
     Prepayment:'Thanh toán trước (Chuyển khoản ngân hàng)',
     Enter_a_message_for_MIDU:'Nhập lời nhắn cho MIDU',
+    Profile:'Thông tin tài khoản',
+    Drugstore:'Nhà thuốc ABC',
+    User:'Thông tin tài khoản',
+    Discount_amount:'Mức chiết khấu',
+    Accumulation:'Hoa hồng doanh thu tích lũy',
+    Approve:'Phê duyệt',
+    Subordinate_account:'Tài khoản cấp dưới',
+    Rose:'Hoa hồng',
+    Loyal_customers:'Khách hàng thân thiết',
+    Link:'Link giới thiệu',
+
   };
   

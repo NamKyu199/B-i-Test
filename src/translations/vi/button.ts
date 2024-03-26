@@ -6,5 +6,7 @@ export default {
     Go_back_to_login:'Quay lại đăng nhập',
     create_order:'Tạo đơn hàng',
     Close:'Đóng',
+    Agency:'ĐẠI LÝ',
+    Logout:'Đăng xuất',
 };
   

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, Text, View, KeyboardAvoidingView,TouchableOpacity, TextInput, ScrollView,Image  } from 'react-native';
 import { useNavigation, ParamListBase } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -280,7 +280,7 @@ const renderDisplayedProducts = () => {
             <View>
             <TouchableOpacity onPress={handleNavigateBack} style={styles.create_order}>
                 <Text style={styles.order}>{t('button:create_order')}</Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
             </View>
           </View>
         </SafeAreaView>

@@ -3,13 +3,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // AUTHENTICATION
-// import SignInScreen from '@/screens/Authentication/SignIn';
-import SignInScreen from './src/screens/Authentication/SignIn';
-import SignUpScreen from './src/screens/Authentication/SignUp';
-import SuccessfulScreen from './src/screens/Authentication/Successful';
-import NotificationScreen from './src/screens/Authentication/Notification';
-import RequestScreen from './src/screens/Authentication/Request';
-import OrderScreen from './src/screens/Main/Order';
+import SignInScreen from '@/screens/Authentication/SignIn';
+import SignUpScreen from '@/screens/Authentication/SignUp';
+import SuccessfulScreen from '@/screens/Authentication/Successful';
+import NotificationScreen from '@/screens/Authentication/Notification';
+import RequestScreen from '@/screens/Authentication/Request';
+import OrderScreen from '@/screens/Main/Order';
+import HomeScreen from '@/screens/Main/Home';
 
 export type RootStackParams = {
   // AUTHENTICATION SCREENS
@@ -54,6 +54,11 @@ const routes: Array<React.ComponentProps<typeof RootStack.Screen>> = [
   {
     name:'OrderScreen',
     component:OrderScreen,
+  },
+
+  {
+    name:'HomeScreen',
+    component:HomeScreen,
   },
 ];
 

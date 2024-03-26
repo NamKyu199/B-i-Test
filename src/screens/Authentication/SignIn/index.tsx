@@ -40,6 +40,10 @@ const SignInScreen: React.FC = () => {
     navigation.navigate('NotificationScreen');
   };
 
+  const handleNavigateHome= () => {
+    navigation.navigate('HomeScreen');
+  };
+
   const handleNavigateOrder = () => {
     navigation.navigate('OrderScreen');
   };
@@ -105,7 +109,10 @@ const SignInScreen: React.FC = () => {
             <Text style={styles.forgotPassword}>{t('title:forgotPassword')}?</Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.button1} onPress={handleNavigateNotification}>
+        {/* <Text style={styles.button1} onPress={handleNavigateNotification}>
+          {t('button:SignIn')}
+        </Text> */}
+        <Text style={styles.button1} onPress={handleNavigateHome}>
           {t('button:SignIn')}
         </Text>
         <Text style={styles.button1} onPress={handleNavigateOrder}>

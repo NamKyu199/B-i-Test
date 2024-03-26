@@ -6,5 +6,7 @@ export default {
     Go_back_to_login:'Go back to login',
     create_order:'Create orders',
     Close:'Close',
+    Agency:'AGENCY',
+    Logout:'Logout',
   };
   
